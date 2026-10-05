@@ -1,0 +1,147 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Artisan product for sale",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string" },
+        "category_id": { "type": "string" },
+        "description": { "type": "string" },
+        "img": { "type": "string" },
+        "stock": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "draft"] },
+        "features": { "type": "array", "items": { "type": "string" } },
+        "specifications": { "type": "object" }
+      },
+      "required": ["title", "price", "category", "description", "img", "status"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "Event orchestration service",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string" },
+        "category_id": { "type": "string" },
+        "description": { "type": "string" },
+        "img": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "draft"] },
+        "duration": { "type": "string" }
+      },
+      "required": ["title", "price", "category", "description", "img", "status"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Group for products and services",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "type": { "type": "string", "enum": ["product", "service", "both"] },
+        "img": { "type": "string" }
+      },
+      "required": ["name", "type"]
+    },
+    "GalleryItem": {
+      "title": "Gallery Item",
+      "description": "Item in the portfolio gallery",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "img": { "type": "string" }
+      },
+      "required": ["title", "img"]
+    },
+    "Feedback": {
+      "title": "Feedback",
+      "description": "User feedback and ratings",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "status": { "type": "string", "enum": ["approved", "pending", "rejected"] }
+      },
+      "required": ["userId", "userName", "rating", "comment", "status"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Store order",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "total": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "processing", "shipped", "delivered", "cancelled"] },
+        "items": { "type": "array" },
+        "paymentStatus": { "type": "string", "enum": ["unpaid", "paid"] },
+        "paymentMethod": { "type": "string" },
+        "address": { "type": "string" },
+        "phone": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["userId", "total", "status", "items", "address", "phone"]
+    },
+    "User": {
+      "title": "User Profile",
+      "description": "Public and private user information",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "vendor", "admin"] },
+        "phone": { "type": "string" },
+        "address": { "type": "string" }
+      },
+      "required": ["userId", "email", "role"]
+    },
+    "Message": {
+      "title": "Contact Message",
+      "description": "Message from the contact form",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["new", "read", "archived"] }
+      },
+      "required": ["name", "email", "message", "status"]
+    },
+    "Bundle": {
+      "title": "Bundle",
+      "description": "Packaged set of products/services",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "type": { "type": "string", "enum": ["premade", "custom"] },
+        "price": { "type": "number" },
+        "items": { "type": "array" },
+        "status": { "type": "string", "enum": ["active", "draft"] },
+        "img": { "type": "string" }
+      },
+      "required": ["title", "type", "price", "status"]
+    }
+  },
+  "firestore": {
+    "products": { "schema": "Product", "description": "Collection of artisan products" },
+    "services": { "schema": "Service", "description": "Collection of event services" },
+    "categories": { "schema": "Category", "description": "Resource categories" },
+    "gallery": { "schema": "GalleryItem", "description": "Portfolio gallery" },
+    "feedback": { "schema": "Feedback", "description": "User reviews and testimonials" },
+    "orders": { "schema": "Order", "description": "Customer orders" },
+    "users": { "schema": "User", "description": "User profiles" },
+    "messages": { "schema": "Message", "description": "Contact form submissions" },
+    "bundles": { "schema": "Bundle", "description": "Product and service bundles" }
+  }
+}

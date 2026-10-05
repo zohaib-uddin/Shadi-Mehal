@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect width="100" height="100" rx="20" fill="#0f0b21" />
+  <text x="45" y="68" font-family="'Georgia', serif" font-size="44" font-style="italic" font-weight="bold" fill="#ffd200" text-anchor="middle">SM</text>
+  <path d="M78 20 L81 27 L88 30 L81 33 L78 40 L75 33 L68 30 L75 27 Z" fill="#ffd200" opacity="0.9"/>
+</svg>
